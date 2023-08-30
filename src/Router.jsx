@@ -1,6 +1,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./components/Root";
 import ErrorPage from "./components/ErrorPage";
+import Home from "./components/Home";
+import GamesPage from "./components/GamesPage";
 
 const Router = () => {
     const router = createBrowserRouter([
@@ -8,6 +10,18 @@ const Router = () => {
             path: "/",
             element: <Root />,
             errorElement: <ErrorPage />,
+            children: [
+                {
+                    errorElement: <ErrorPage />,
+                    children: [
+                        {index: true, element: <Home />},
+                        {
+                            path: "games/:gameGenre",
+                            element: <GamesPage />
+                        },
+                    ]
+                }
+            ]
         }
     ])
 
