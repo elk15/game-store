@@ -1,8 +1,11 @@
+import SectionTitle from "./SectionTitle";
+import { mdiMarker } from '@mdi/js';
+
 const Home = () => {
     return (
-        <div>
-            Home
-            </div>
+        <>
+            <SectionTitle title={'Highlights'} icon={mdiMarker}/>
+        </>
     )
 }
 

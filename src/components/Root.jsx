@@ -105,10 +105,10 @@ const Root = () => {
         </div>
         
       </header>
-      <main>
+      <main className='md:flex md:flex-col md:items-center h-screen'>
         {isMobileMenuOpen ?
-          <nav className='flex-1 animate-open flex justify-center pt-5
-           border-t-neutral-500 border-t-[1px] bg-neutral-900 text-neutral-300 h-screen'>
+          <nav className='flex-1 animate-open flex justify-center 
+           border-t-neutral-500 border-t-[1px] bg-neutral-900 text-neutral-300 h-screen pt-5'>
           <ul className='flex gap-7 flex-col items-center'>
             <li className='hover:text-neutral-50 tracking-wide'> <NavLink to={'/'}> HOME </NavLink> </li>
             <li className='hover:text-neutral-50 tracking-wide'><NavLink to={'/games/rpg'}> RPG </NavLink></li>
