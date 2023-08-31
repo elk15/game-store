@@ -2,12 +2,14 @@ import Icon from '@mdi/react';
 import { mdiCartOutline } from '@mdi/js';
 import { mdiMagnify } from '@mdi/js';
 import { mdiClose } from '@mdi/js';
+import { mdiMenu } from '@mdi/js';
 import { NavLink, Outlet } from 'react-router-dom';
 import { useState } from 'react';
 
 const Root = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleCart = () => {
     setIsCartOpen(isCartOpen ? false : true);
@@ -25,6 +27,14 @@ const Root = () => {
     setIsSearchBarOpen(false);
   }
 
+  const openMobileMenu = () => {
+    setIsMobileMenuOpen(true);
+  }
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  }
+
   return (
     <>
       <header className='flex justify-center bg-neutral-900 opacity-90 py-4 px-3 text-neutral-300 sticky top-0 text-sm '>
@@ -34,12 +44,13 @@ const Root = () => {
           <div  data-testid = "overlay" className='fixed top-0 left-0 w-full h-full z-99' onClick={closeSearchBar}></div>
           <div className='flex flex-1 gap-2 items-center animate-open z-100 relative'>
             <Icon path={mdiMagnify} size={1} />
-            <input type="search" name="gameSearch" className='w-full bg-transparent border-b-neutral-700 border-b-[1px]
+            <input type="search" name="gameSearch" 
+            className='w-full bg-transparent border-b-neutral-700 border-b-[1px]
             focus:outline-none'></input>
             </div>
           </>
           :
-          <nav className='flex-1 animate-open'>
+          <nav className='flex-1 animate-open hidden md:block'>
             <ul className='flex gap-7'>
               <li className='hover:text-neutral-50 tracking-wide'> <NavLink to={'/'}> HOME </NavLink> </li>
               <li className='hover:text-neutral-50 tracking-wide'><NavLink to={'/games/rpg'}> RPG </NavLink></li>
@@ -62,6 +73,16 @@ const Root = () => {
               <Icon path={mdiMagnify} size={1} />
             </button>
             }
+            {isMobileMenuOpen?
+              <button onClick={closeMobileMenu} aria-label='close-menu' className='hover:text-neutral-50 block md:hidden'>
+              <Icon path={mdiClose} size={1} />
+              </button>
+              :
+              <button onClick={openMobileMenu} aria-label="open-menu" className='block md:hidden'>
+              <Icon path={mdiMenu} size={1} />
+              </button>
+            }
+            
               {isCartOpen &&
                 <>
                 <div  data-testid = "overlay" className='fixed top-0 left-0 w-full h-full z-99' onClick={closeCart}></div>
@@ -85,7 +106,20 @@ const Root = () => {
         
       </header>
       <main>
+        {isMobileMenuOpen ?
+          <nav className='flex-1 animate-open flex justify-center pt-5
+           border-t-neutral-500 border-t-[1px] bg-neutral-900 text-neutral-300 h-screen'>
+          <ul className='flex gap-7 flex-col items-center'>
+            <li className='hover:text-neutral-50 tracking-wide'> <NavLink to={'/'}> HOME </NavLink> </li>
+            <li className='hover:text-neutral-50 tracking-wide'><NavLink to={'/games/rpg'}> RPG </NavLink></li>
+            <li className='hover:text-neutral-50 tracking-wide'><NavLink to={'/games/strategy'}> STRATEGY </NavLink></li>
+            <li className='hover:text-neutral-50 tracking-wide'><NavLink to={'/games/shooters'}> SHOOTERS </NavLink></li>
+            <li className='hover:text-neutral-50 tracking-wide'><NavLink to={'/games/action'}> ACTION </NavLink></li>
+          </ul>
+        </nav>
+        :
         <Outlet />
+        }
       </main>
     </>
   )
