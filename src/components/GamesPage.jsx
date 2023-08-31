@@ -4,8 +4,9 @@ const GamesPage = () => {
     let {gameGenre} = useParams();
 
     return (
-        <h1>        {gameGenre}
-        </h1>
+        <div >        
+            {gameGenre}
+        </div>
     )
 }
 

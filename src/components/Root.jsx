@@ -31,7 +31,7 @@ const Root = () => {
         <div className="max-w-screen-lg flex flex-1 gap-3 items-center justify-between">
           {isSearchBarOpen ?
           <>
-          <div className='fixed top-0 left-0 w-full h-full z-99' onClick={closeSearchBar}></div>
+          <div  data-testid = "overlay" className='fixed top-0 left-0 w-full h-full z-99' onClick={closeSearchBar}></div>
           <div className='flex flex-1 gap-2 items-center animate-open z-100 relative'>
             <Icon path={mdiMagnify} size={1} />
             <input type="search" name="gameSearch" className='w-full bg-transparent border-b-neutral-700 border-b-[1px]
@@ -58,13 +58,13 @@ const Root = () => {
             <Icon path={mdiClose} size={1} />
             </button>
             :
-            <button onClick={openSearchBar} aria-label='search' className='hover:text-neutral-50'>
+            <button onClick={openSearchBar} aria-label='open-search' className='hover:text-neutral-50'>
               <Icon path={mdiMagnify} size={1} />
             </button>
             }
               {isCartOpen &&
                 <>
-                <div className='fixed top-0 left-0 w-full h-full z-99' onClick={closeCart}></div>
+                <div  data-testid = "overlay" className='fixed top-0 left-0 w-full h-full z-99' onClick={closeCart}></div>
                   <div className='absolute bg-white p-3 top-[56px] right-[30px] shadow-md z-101 animate-openfast
                     after:absolute after:bottom-full after:left-[89%] after:border-[5px] after:border-solid after:border-b-white after:border-t-transparent after:border-r-transparent after:border-l-transparent'>
                     <div className='flex flex-col items-center p-10 gap-3'>
