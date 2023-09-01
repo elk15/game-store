@@ -22,11 +22,11 @@ const Carousel = ({carouselData}) => {
                 carouselData.map((game) => <SliderImage key={game.id} title={game.name} image={game.background_image} id={game.id}/>)
             :
             <>
-                <SliderImage title={'My Game'} image={"./placeholder.jpg"} id={0}/>
-                <SliderImage title={'My Game'} image={"./placeholder.jpg"} id={0}/>
-                <SliderImage title={'My Game'} image={"./placeholder.jpg"} id={0}/>
-                <SliderImage title={'My Game'} image={"./placeholder.jpg"} id={0}/>
-                <SliderImage title={'My Game'} image={"./placeholder.jpg"} id={0}/>
+                <SliderImage title={'My Game'} image={"./placeholder.gif"} id={0}/>
+                <SliderImage title={'My Game'} image={"./placeholder.gif"} id={0}/>
+                <SliderImage title={'My Game'} image={"./placeholder.gif"} id={0}/>
+                <SliderImage title={'My Game'} image={"./placeholder.gif"} id={0}/>
+                <SliderImage title={'My Game'} image={"./placeholder.gif"} id={0}/>
             </>
             }            
         </Flicking>

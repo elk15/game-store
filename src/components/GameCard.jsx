@@ -9,7 +9,7 @@ const GameCard = ({image, title, id}) => {
             <img className='object-fill flex-1
             max-w-[256px] w-full min-w-[180px] 
             max-h-[144px]' 
-            src={image == null ? './placeholder.jpg' : image} alt={title}/>
+            src={image == null ? './placeholder.gif' : image} alt={title}/>
             <div className='px-3 py-2 flex flex-col flex-1 justify-between'>
                 <h1 >{title}</h1>
                 <div className='flex items-center gap-2 justify-end'>

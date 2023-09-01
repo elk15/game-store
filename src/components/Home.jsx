@@ -24,14 +24,14 @@ const Home = ({addItemToCart, carouselData, newReleasesData, hotPicksData, bestS
                         newReleasesData.map((game) => <GameCard key={game.id} title={game.name} image={game.background_image} id={game.id} />)
                     :
                     <>
-                        <GameCard title={'My Game'} price={'59.99$'} image={'./placeholder.jpg'} id={0}></GameCard>
-                        <GameCard title={'My Game'} price={'59.99$'} image={'./placeholder.jpg'} id={0}></GameCard>
-                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.jpg'} id={0}></GameCard>
-                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.jpg'} id={0}></GameCard>
-                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.jpg'} id={0}></GameCard>
-                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.jpg'} id={0}></GameCard>
-                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.jpg'} id={0}></GameCard>
-                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.jpg'} id={0}></GameCard>
+                        <GameCard title={'My Game'} price={'59.99$'} image={'./placeholder.gif'} id={0}></GameCard>
+                        <GameCard title={'My Game'} price={'59.99$'} image={'./placeholder.gif'} id={0}></GameCard>
+                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.gif'} id={0}></GameCard>
+                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.gif'} id={0}></GameCard>
+                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.gif'} id={0}></GameCard>
+                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.gif'} id={0}></GameCard>
+                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.gif'} id={0}></GameCard>
+                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.gif'} id={0}></GameCard>
                     </>
                     }
                 </div>
@@ -43,14 +43,14 @@ const Home = ({addItemToCart, carouselData, newReleasesData, hotPicksData, bestS
                         hotPicksData.map((game) => <GameCard key={game.id} title={game.name} image={game.background_image} id={game.id} />)
                     :
                     <>
-                        <GameCard title={'My Game'} price={'59.99$'} image={'./placeholder.jpg'} id={0}></GameCard>
-                        <GameCard title={'My Game'} price={'59.99$'} image={'./placeholder.jpg'} id={0}></GameCard>
-                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.jpg'} id={0}></GameCard>
-                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.jpg'} id={0}></GameCard>
-                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.jpg'} id={0}></GameCard>
-                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.jpg'} id={0}></GameCard>
-                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.jpg'} id={0}></GameCard>
-                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.jpg'} id={0}></GameCard>
+                        <GameCard title={'My Game'} price={'59.99$'} image={'./placeholder.gif'} id={0}></GameCard>
+                        <GameCard title={'My Game'} price={'59.99$'} image={'./placeholder.gif'} id={0}></GameCard>
+                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.gif'} id={0}></GameCard>
+                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.gif'} id={0}></GameCard>
+                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.gif'} id={0}></GameCard>
+                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.gif'} id={0}></GameCard>
+                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.gif'} id={0}></GameCard>
+                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.gif'} id={0}></GameCard>
                     </>
                     }
                 </div>
@@ -62,14 +62,14 @@ const Home = ({addItemToCart, carouselData, newReleasesData, hotPicksData, bestS
                         bestSellingData.map((game) => <GameCard key={game.id} title={game.name} image={game.background_image} id={game.id} />)
                     :
                     <>
-                        <GameCard title={'My Game'} price={'59.99$'} image={'./placeholder.jpg'} id={0}></GameCard>
-                        <GameCard title={'My Game'} price={'59.99$'} image={'./placeholder.jpg'} id={0}></GameCard>
-                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.jpg'} id={0}></GameCard>
-                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.jpg'} id={0}></GameCard>
-                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.jpg'} id={0}></GameCard>
-                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.jpg'} id={0}></GameCard>
-                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.jpg'} id={0}></GameCard>
-                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.jpg'} id={0}></GameCard>
+                        <GameCard title={'My Game'} price={'59.99$'} image={'./placeholder.gif'} id={0}></GameCard>
+                        <GameCard title={'My Game'} price={'59.99$'} image={'./placeholder.gif'} id={0}></GameCard>
+                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.gif'} id={0}></GameCard>
+                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.gif'} id={0}></GameCard>
+                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.gif'} id={0}></GameCard>
+                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.gif'} id={0}></GameCard>
+                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.gif'} id={0}></GameCard>
+                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.gif'} id={0}></GameCard>
                     </>
                     }
                 </div>
@@ -82,14 +82,10 @@ const Home = ({addItemToCart, carouselData, newReleasesData, hotPicksData, bestS
                         upcomingData.map((game) => <GameCard key={game.id} title={game.name} image={game.background_image} id={game.id} />)
                     :
                     <>
-                        <GameCard title={'My Game'} price={'59.99$'} image={'./placeholder.jpg'} id={0}></GameCard>
-                        <GameCard title={'My Game'} price={'59.99$'} image={'./placeholder.jpg'} id={0}></GameCard>
-                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.jpg'} id={0}></GameCard>
-                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.jpg'} id={0}></GameCard>
-                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.jpg'} id={0}></GameCard>
-                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.jpg'} id={0}></GameCard>
-                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.jpg'} id={0}></GameCard>
-                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.jpg'} id={0}></GameCard>
+                        <GameCard title={'My Game'} price={'59.99$'} image={'./placeholder.gif'} id={0}></GameCard>
+                        <GameCard title={'My Game'} price={'59.99$'} image={'./placeholder.gif'} id={0}></GameCard>
+                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.gif'} id={0}></GameCard>
+                        <GameCard title={'My Game'} price={'4.99$'} image={'./placeholder.gif'} id={0}></GameCard>
                     </>
                     }
                 </div>
