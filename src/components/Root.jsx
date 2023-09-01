@@ -122,6 +122,7 @@ const Root = ({cart, setCart}) => {
         <Outlet />
         }
       </main>
+      <footer className='bg-neutral-900 py-3 text-white text-center mt-3'>By elk15 - 2023</footer>
     </>
   )
 }
