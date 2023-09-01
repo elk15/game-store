@@ -5,8 +5,9 @@ import { mdiClose } from '@mdi/js';
 import { mdiMenu } from '@mdi/js';
 import { NavLink, Outlet } from 'react-router-dom';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
-const Root = () => {
+const Root = ({cart, setCart}) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -37,12 +38,12 @@ const Root = () => {
 
   return (
     <>
-      <header className='flex justify-center bg-neutral-900 opacity-90 py-4 px-3 text-neutral-300 sticky top-0 text-sm '>
+      <header className='z-[100] opacity-95 flex justify-center bg-neutral-900  py-4 px-3 text-neutral-300 sticky top-0 text-sm '>
         <div className="max-w-screen-lg flex flex-1 gap-3 items-center justify-between">
           {isSearchBarOpen ?
           <>
-          <div  data-testid = "overlay" className='fixed top-0 left-0 w-full h-full z-99' onClick={closeSearchBar}></div>
-          <div className='flex flex-1 gap-2 items-center animate-open z-100 relative'>
+          <div  data-testid = "overlay" className='z-[101] fixed top-0 left-0 w-full h-full' onClick={closeSearchBar}></div>
+          <div className='z-[102] flex flex-1 gap-2 items-center animate-open relative'>
             <Icon path={mdiMagnify} size={1} />
             <input type="search" name="gameSearch" 
             className='w-full bg-transparent border-b-neutral-700 border-b-[1px]
@@ -50,7 +51,7 @@ const Root = () => {
             </div>
           </>
           :
-          <nav className='flex-1 animate-open hidden md:block'>
+          <nav className='flex-1 animate-open hidden md:block font-semibold'>
             <ul className='flex gap-7'>
               <li className='hover:text-neutral-50 tracking-wide'> <NavLink to={'/'}> HOME </NavLink> </li>
               <li className='hover:text-neutral-50 tracking-wide'><NavLink to={'/games/rpg'}> RPG </NavLink></li>
@@ -85,8 +86,8 @@ const Root = () => {
             
               {isCartOpen &&
                 <>
-                <div  data-testid = "overlay" className='fixed top-0 left-0 w-full h-full z-99' onClick={closeCart}></div>
-                  <div className='absolute bg-white p-3 top-[56px] right-[30px] shadow-md z-101 animate-openfast
+                <div  data-testid = "overlay" className='z-[101] fixed top-0 left-0 w-full h-full' onClick={closeCart}></div>
+                  <div className='absolute bg-white p-3 top-[56px] right-[30px] shadow-md z-[103] animate-openfast
                     after:absolute after:bottom-full after:left-[89%] after:border-[5px] after:border-solid after:border-b-white after:border-t-transparent after:border-r-transparent after:border-l-transparent'>
                     <div className='flex flex-col items-center p-10 gap-3'>
                       <Icon path={mdiCartOutline} size={1} color={'green'}/>
@@ -105,7 +106,7 @@ const Root = () => {
         </div>
         
       </header>
-      <main className='md:flex md:flex-col md:items-center h-screen'>
+      <main className='md:flex md:flex-col md:items-center overflow-x-hidden'>
         {isMobileMenuOpen ?
           <nav className='flex-1 animate-open flex justify-center 
            border-t-neutral-500 border-t-[1px] bg-neutral-900 text-neutral-300 h-screen pt-5'>
@@ -123,6 +124,11 @@ const Root = () => {
       </main>
     </>
   )
+}
+
+Root.propTypes = {
+  cart: PropTypes.array,
+  setCart: PropTypes.func
 }
 
 export default Root;
