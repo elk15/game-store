@@ -9,9 +9,10 @@ describe("Header", () => {
     afterEach(cleanup)
 
     it("renders Header", () => {
+        const fakeCart = [];
         const { asFragment } = render(
         <BrowserRouter>
-            <Root />
+            <Root cart={fakeCart}/>
         </BrowserRouter>
         
         )
@@ -26,9 +27,10 @@ describe("Search Bar", () => {
 
     it("renders search bar when search icon is clicked", async () => {
         const user = userEvent.setup();
+        const fakeCart = [];
         render(
             <BrowserRouter>
-                <Root />
+                <Root cart={fakeCart}/>
             </BrowserRouter>
         );
         const btn = screen.getByLabelText('open-search');
@@ -40,9 +42,10 @@ describe("Search Bar", () => {
 
     it("closes search bar when close icon is clicked", async () => {
         const user = userEvent.setup();
+        const fakeCart = [];
         render(
             <BrowserRouter>
-                <Root />
+                <Root cart={fakeCart}/>
             </BrowserRouter>
         );
         const openBtn = screen.getByLabelText('open-search');
@@ -58,9 +61,10 @@ describe("Search Bar", () => {
 
     it("closes search bar when anything but it is clicked", async () => {
         const user = userEvent.setup();
+        const fakeCart = [];
         render(
             <BrowserRouter>
-                <Root />
+                <Root cart={fakeCart}/>
             </BrowserRouter>
         );
         const openBtn = screen.getByLabelText('open-search');
@@ -77,9 +81,10 @@ describe("Search Bar", () => {
     it("search displays results correctly", async () => {
         const user = userEvent.setup();
         const allGames = [{id : 1, name: 'The Game', released: '2022-01-02', genres: [{name: 'RPG'}]}];
+        const fakeCart = [];
         render(
             <BrowserRouter>
-                <Root allGames={allGames}/>
+                <Root cart={fakeCart} allGames={allGames}/>
             </BrowserRouter>
         );
         const openBtn = screen.getByLabelText('open-search');
@@ -95,11 +100,13 @@ describe("Search Bar", () => {
 describe("Cart Modal", () => {
     afterEach(cleanup)
 
+
     it("renders cart modal when cart is clicked", async () => {
         const user = userEvent.setup();
+        const fakeCart = [];
         render(
             <BrowserRouter>
-                <Root />
+                <Root cart={fakeCart}/>
             </BrowserRouter>
         );
         const btn = screen.getByLabelText('cart');
@@ -111,9 +118,10 @@ describe("Cart Modal", () => {
 
     it("closes cart modal when cart is clicked", async () => {
         const user = userEvent.setup();
+        const fakeCart = [];
         render(
             <BrowserRouter>
-                <Root />
+                <Root cart={fakeCart}/>
             </BrowserRouter>
         );
         const openBtn = screen.getByLabelText('cart');
@@ -129,12 +137,13 @@ describe("Cart Modal", () => {
 
     it("closes cart modal when anything but it is clicked", async () => {
         const user = userEvent.setup();
+        const fakeCart = [];
         render(
             <BrowserRouter>
-                <Root />
+                <Root cart={fakeCart}/>
             </BrowserRouter>
         );
-        const openBtn = screen.getByLabelText('open-search');
+        const openBtn = screen.getByLabelText('cart');
 
         await user.click(openBtn);
 
@@ -143,5 +152,35 @@ describe("Cart Modal", () => {
         await user.click(closeBtn);
 
         expect(screen.queryAllByTestId('overlay').length).toBe(0);
+    })
+
+    it("displays cart items", async () => {
+        const user = userEvent.setup();
+        const fakeCart = [{id: 1, name: 'My Game', background_image: ''}];
+        render(
+            <BrowserRouter>
+                <Root cart={fakeCart}/>
+            </BrowserRouter>
+        );
+        const openBtn = screen.getByLabelText('cart');
+
+        await user.click(openBtn);
+
+        expect(screen.getByText('My Game')).toBeInTheDocument();
+    })
+
+    it("displays appropriate text if cart is empty", async () => {
+        const user = userEvent.setup();
+        const fakeCart = [];
+        render(
+            <BrowserRouter>
+                <Root cart={fakeCart}/>
+            </BrowserRouter>
+        );
+        const openBtn = screen.getByLabelText('cart');
+
+        await user.click(openBtn);
+
+        expect(screen.getByText('YOUR CART IS EMPTY')).toBeInTheDocument();
     })
 })
