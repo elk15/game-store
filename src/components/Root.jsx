@@ -77,7 +77,7 @@ const Root = ({cart, allGames, addItemToCart}) => {
           <div className='z-[102] lg:absolute lg:top-[60px] top-[55px] text-black bg-white p-3 animate-openfast
           flex flex-col lg:max-w-[500px] rounded fixed left-0 lg:left-auto w-full h-full lg:h-auto'>
             <h2 className='font-semibold text-xl mb-2'>
-              {searchResults.length} Games found
+              {searchResults.length} {searchResults.length === 1 ? ' Game' : ' Games'} found
             </h2>
             <ul>
               {searchResults.map((game) => {
@@ -136,7 +136,7 @@ const Root = ({cart, allGames, addItemToCart}) => {
               {isCartOpen &&
                 <>
                 <div  data-testid = "overlay" className='z-[101] fixed top-0 left-0 w-full h-full' onClick={closeCart}></div>
-                  <div className='absolute bg-white p-3 top-[56px] right-[30px] shadow-md z-[103] animate-openfast
+                  <div className='absolute bg-white top-[56px] right-[30px] shadow-md z-[103] animate-openfast lg:min-w-[400px]
                     after:absolute after:bottom-full after:left-[89%] after:border-[5px] after:border-solid after:border-b-white after:border-t-transparent after:border-r-transparent after:border-l-transparent'>
                     {cart.length === 0 ?
                     <div className='flex flex-col items-center p-10 gap-3'>
@@ -149,13 +149,39 @@ const Root = ({cart, allGames, addItemToCart}) => {
                       </button>
                     </div>
                       :
+                      <>
+                      <div className='text-black p-3 flex justify-between items-center bg-neutral-100'>
+                        <div>
+                          <p className='text-neutral-500'>Your shopping cart</p>
+                          <h2 className='font-semibold text-lg'>
+                            {cart.length} {cart.length === 1 ? ' Item' : ' Items'} added
+                            </h2>
+                        </div>
+                        <div className='flex gap-3 items-center'>
+                          <p className='text-slate-600 font-semibold'>${cart.length * 59.99}</p>
+                          <button className='bg-green-500 hover:brightness-110 text-white p-3 rounded font-semibold'>
+                            GO TO CHECKOUT
+                          </button>
+                        </div>
+                      </div>
                       <ul>
                       {cart.map((item) => {
-                        return <li key={item.id} className="text-black">
-                            {item.name}
+                        return <li key={item.id} className="border-t-[1px] border-neutral-400 text-black p-1 flex gap-2 cursor-pointer">
+                            <img src={item.background_image} alt="" className='w-[100px]'/>
+                            <div className='flex justify-between flex-1'>
+                              <div className='flex flex-col items-start'>
+                                <h2 className='font-semibold'>{item.name}</h2>
+                                <button className='text-slate-600 text-sm underline decoration-solid decoration-gray-600' 
+                                data-id={item.id}>
+                                  Remove
+                                </button>
+                              </div>
+                              <p className='ml-3 px-2 text-slate-600 font-semibold'>$59.99</p>
+                            </div>
                           </li>;
                       })}
                       </ul>
+                      </>
                     } 
                   </div>
                 </>
