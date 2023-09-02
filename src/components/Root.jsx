@@ -136,8 +136,9 @@ const Root = ({cart, allGames, addItemToCart}) => {
               {isCartOpen &&
                 <>
                 <div  data-testid = "overlay" className='z-[101] fixed top-0 left-0 w-full h-full' onClick={closeCart}></div>
-                  <div className='absolute bg-white top-[56px] right-[30px] shadow-md z-[103] animate-openfast lg:min-w-[400px]
-                    after:absolute after:bottom-full after:left-[89%] after:border-[5px] after:border-solid after:border-b-white after:border-t-transparent after:border-r-transparent after:border-l-transparent'>
+                  <div className='lg:absolute bg-white lg:top-[56px] lg:left-[-15px] shadow-md z-[103] animate-openfast lg:min-w-[400px] lg:h-auto
+                    lg:after:absolute lg:after:bottom-full lg:after:left-[89%] lg:after:border-[5px] lg:after:border-solid lg:after:border-b-white lg:after:border-t-transparent lg:after:border-r-transparent lg:after:border-l-transparent
+                    fixed top-[56px] left-0 w-full h-full'>
                     {cart.length === 0 ?
                     <div className='flex flex-col items-center p-10 gap-3'>
                       <Icon path={mdiCartOutline} size={1} color={'green'}/>
