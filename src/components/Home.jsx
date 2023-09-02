@@ -15,13 +15,13 @@ const Home = ({addItemToCart, carouselData, newReleasesData, hotPicksData, bestS
         <>
             <section className="flex flex-col justify-center items-center lg:h-[690px] sm:h-[400px] h-[280px]">
                 <SectionTitle title={'Highlights'} icon={mdiMarker}/>
-                <Carousel carouselData={carouselData}/>
+                <Carousel carouselData={carouselData} addItemToCart={addItemToCart}/>
             </section>
             <section className="flex flex-col justify-center items-center mb-3">
                 <SectionTitle title={'New Releases'} icon={mdiBullhorn}/>
                 <div className="flex flex-wrap justify-center gap-3 max-w-[1200px]">
                     {newReleasesData ?
-                        newReleasesData.map((game) => <GameCard key={game.id} title={game.name} image={game.background_image} id={game.id} />)
+                        newReleasesData.map((game) => <GameCard key={game.id} title={game.name} image={game.background_image} id={game.id} addItemToCart={addItemToCart}/>)
                     :
                     <>
                         <GameCard title={'My Game'} price={'$59.99'} image={'./placeholder.gif'} id={0}></GameCard>
@@ -40,7 +40,7 @@ const Home = ({addItemToCart, carouselData, newReleasesData, hotPicksData, bestS
                 <SectionTitle title={'Hot Picks'} icon={mdiFire}/>
                 <div className="flex flex-wrap justify-center gap-3 max-w-[1200px]">
                     {hotPicksData ?
-                        hotPicksData.map((game) => <GameCard key={game.id} title={game.name} image={game.background_image} id={game.id} />)
+                        hotPicksData.map((game) => <GameCard key={game.id} title={game.name} image={game.background_image} id={game.id} addItemToCart={addItemToCart}/>)
                     :
                     <>
                         <GameCard title={'My Game'} price={'$59.99'} image={'./placeholder.gif'} id={0}></GameCard>
@@ -59,7 +59,7 @@ const Home = ({addItemToCart, carouselData, newReleasesData, hotPicksData, bestS
                 <SectionTitle title={'Best Selling'} icon={mdiStar}/>
                 <div className="flex flex-wrap justify-center gap-3 max-w-[1200px]">
                     {bestSellingData ?
-                        bestSellingData.map((game) => <GameCard key={game.id} title={game.name} image={game.background_image} id={game.id} />)
+                        bestSellingData.map((game) => <GameCard key={game.id} title={game.name} image={game.background_image} id={game.id} addItemToCart={addItemToCart}/>)
                     :
                     <>
                         <GameCard title={'My Game'} price={'$59.99'} image={'./placeholder.gif'} id={0}></GameCard>
@@ -79,7 +79,7 @@ const Home = ({addItemToCart, carouselData, newReleasesData, hotPicksData, bestS
                 <SectionTitle title={'Upcoming'} icon={mdiCompass}/>
                 <div className="flex flex-wrap justify-center gap-3 max-w-[1200px]">
                     {upcomingData ?
-                        upcomingData.map((game) => <GameCard key={game.id} title={game.name} image={game.background_image} id={game.id} />)
+                        upcomingData.map((game) => <GameCard key={game.id} title={game.name} image={game.background_image} id={game.id} addItemToCart={addItemToCart}/>)
                     :
                     <>
                         <GameCard title={'My Game'} price={'$59.99'} image={'./placeholder.gif'} id={0}></GameCard>

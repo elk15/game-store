@@ -8,7 +8,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 
-const Root = ({cart, setCart, allGames}) => {
+const Root = ({cart, allGames, addItemToCart}) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -81,7 +81,8 @@ const Root = ({cart, setCart, allGames}) => {
             </h2>
             <ul>
               {searchResults.map((game) => {
-                return  <li key={game.id} className='flex cursor-pointer p-3 justify-between border-t-2'>
+                return  <li key={game.id} data-id={game.id} onClick={addItemToCart}
+                className='flex cursor-pointer p-3 justify-between border-t-2'>
                           <div>
                             <h3 className="font-semibold">{game.name}</h3>
                             <div className='text-neutral-500'>
@@ -111,7 +112,7 @@ const Root = ({cart, setCart, allGames}) => {
           }
           <div className='flex gap-5 relative flex-1 justify-end'>
             <button onClick={toggleCart} aria-label='cart' className='z-[102] flex items-center hover:text-neutral-50'>
-              <Icon path={mdiCartOutline} size={1} /> 0
+              <Icon path={mdiCartOutline} size={1} /> {cart.length}
             </button>
             {isSearchBarOpen ?
             <button onClick={closeSearchBar} aria-label='close-search' className='z-[101] hover:text-neutral-50'>
@@ -137,6 +138,7 @@ const Root = ({cart, setCart, allGames}) => {
                 <div  data-testid = "overlay" className='z-[101] fixed top-0 left-0 w-full h-full' onClick={closeCart}></div>
                   <div className='absolute bg-white p-3 top-[56px] right-[30px] shadow-md z-[103] animate-openfast
                     after:absolute after:bottom-full after:left-[89%] after:border-[5px] after:border-solid after:border-b-white after:border-t-transparent after:border-r-transparent after:border-l-transparent'>
+                    {cart.length === 0 ?
                     <div className='flex flex-col items-center p-10 gap-3'>
                       <Icon path={mdiCartOutline} size={1} color={'green'}/>
                       <h3 className='text-green-600'>YOUR CART IS EMPTY</h3>
@@ -144,8 +146,17 @@ const Root = ({cart, setCart, allGames}) => {
                       <p className='text-neutral-500'>Explore great games and offers</p>
                       <button className='text-neutral-700 mt-2 border-neutral-300 border-[1px] rounded p-2 bg-neutral-200 font-semibold'>
                         BROWSE BEST SELLERS
-                        </button>
+                      </button>
                     </div>
+                      :
+                      <ul>
+                      {cart.map((item) => {
+                        return <li key={item.id} className="text-black">
+                            {item.name}
+                          </li>;
+                      })}
+                      </ul>
+                    } 
                   </div>
                 </>
               }
@@ -177,8 +188,8 @@ const Root = ({cart, setCart, allGames}) => {
 
 Root.propTypes = {
   cart: PropTypes.array,
-  setCart: PropTypes.func,
-  allGames: PropTypes.array
+  allGames: PropTypes.array,
+  addItemToCart: PropTypes.func
 }
 
 export default Root;

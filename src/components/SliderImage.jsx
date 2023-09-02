@@ -3,7 +3,7 @@ import Icon from '@mdi/react';
 import { mdiCartPlus } from '@mdi/js';
 import { forwardRef } from 'react';
 
-const SliderImage = forwardRef(function SliderImage({title, image, id}, ref) {
+const SliderImage = forwardRef(function SliderImage({title, image, id, addItemToCart}, ref) {
     return (
         <div ref={ref} className="mx-2">
             <img className="lg:w-[1024px] lg:h-[600px] sm:w-[500px] sm:h-[320px] w-[360px] h-[200px] rounded-md object-fit shadow" 
@@ -17,7 +17,8 @@ const SliderImage = forwardRef(function SliderImage({title, image, id}, ref) {
                     <p className='lg:text-2xl font-semibold drop-shadow-[0_35px_35px_rgba(0,0,0,0.8)]'>
                         $59.99
                         </p>
-                    <button className='flex items-center lg:text-xl bg-green-500 lg:p-3 lg:gap-2 p-2 rounded hover:brightness-110'>
+                    <button data-id={id} onClick={addItemToCart}
+                    className='flex items-center lg:text-xl bg-green-500 lg:p-3 lg:gap-2 p-2 rounded hover:brightness-110'>
                         <Icon path={mdiCartPlus} size={1} /> Add to card
                     </button>
                 </div>
@@ -30,6 +31,7 @@ SliderImage.propTypes = {
     title : PropTypes.string,
     image: PropTypes.string,
     id: PropTypes.number,
+    addItemToCart: PropTypes.func
 }
 
 export default SliderImage;

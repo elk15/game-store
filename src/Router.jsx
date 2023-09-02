@@ -6,6 +6,15 @@ import GamesPage from "./components/GamesPage";
 import useGameData from "./GameData";
 import { useState } from "react";
 
+const doesItContainGame = (cart, id) => {
+    for(let i = 0; i < cart.length; i++) {
+        if(cart[i].id == id) {
+            return true;
+        }
+    }
+    return false;
+}
+
 const Router = () => {
     let allGames = [];
     const uniqueIds = [];
@@ -38,13 +47,17 @@ const Router = () => {
     })
 
     const addItemToCart = (e) => {
-        setCart(...cart, e.currentTarget.dataset.id)
+        const gameId = e.currentTarget.dataset.id;
+        if (!doesItContainGame(cart, gameId)) {
+            const game = allGames.find((game) => game.id == gameId);
+            setCart([...cart, game]);
+        }
     }
 
     const router = createBrowserRouter([
         {
             path: "/",
-            element: <Root cart={cart} setCart={setCart} allGames={allGames}/>,
+            element: <Root cart={cart} allGames={allGames} addItemToCart={addItemToCart} />,
             errorElement: <ErrorPage />,
             children: [
                 {

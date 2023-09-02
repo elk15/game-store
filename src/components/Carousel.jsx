@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 
 
-const Carousel = ({carouselData}) => {
+const Carousel = ({carouselData, addItemToCart}) => {
     const plugins = [new AutoPlay({ duration: 2500, direction: "NEXT", stopOnHover: true }),  new Fade()];
       
     return (
@@ -19,7 +19,7 @@ const Carousel = ({carouselData}) => {
             inputType= {["touch", "mouse"]}
         >
             {carouselData ?
-                carouselData.map((game) => <SliderImage key={game.id} title={game.name} image={game.background_image} id={game.id}/>)
+                carouselData.map((game) => <SliderImage key={game.id} title={game.name} image={game.background_image} id={game.id} addItemToCart={addItemToCart}/>)
             :
             <>
                 <SliderImage title={'My Game'} image={"./placeholder.gif"} id={0}/>
