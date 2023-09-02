@@ -29,6 +29,7 @@ const Root = ({cart, setCart, allGames}) => {
 
   const closeSearchBar = () => {
     setIsSearchBarOpen(false);
+    setSearchInput('');
   }
 
   const openMobileMenu = () => {
@@ -65,21 +66,37 @@ const Root = ({cart, setCart, allGames}) => {
         <div className="max-w-screen-lg flex flex-1 gap-3 items-center justify-between">
           {isSearchBarOpen ?
           <>
-          <div  data-testid = "overlay" className='z-[101] fixed top-0 left-0 w-full h-full' onClick={closeSearchBar}></div>
+          <div  data-testid = "overlay" className='z-[101] fixed top-0 left-0 w-full h-full bg-black opacity-40' onClick={closeSearchBar}></div>
           <div className='z-[102] flex flex-1 gap-2 items-center animate-open relative'>
             <Icon path={mdiMagnify} size={1} />
             <input type="search" name="gameSearch" value={searchInput} onChange={handleSearchInputChange}
             className='w-full bg-transparent border-b-neutral-700 border-b-[1px]
             focus:outline-none'></input>
           </div>
-          <div>
+          {searchInput.length > 1 &&
+          <div className='z-[102] absolute top-[60px] text-black bg-white p-3 animate-openfast
+          flex flex-col lg:min-w-[500px] rounded'>
+            <h2 className='font-semibold text-xl mb-2'>
+              {searchResults.length} Games found
+            </h2>
             <ul>
               {searchResults.map((game) => {
-                return  <li key={game.id}>
-                          {game.name} {}
+                return  <li key={game.id} className='flex cursor-pointer p-3 justify-between border-t-2'>
+                          <div>
+                            <h3 className="font-semibold">{game.name}</h3>
+                            <div className='text-neutral-500'>
+                              {game.released.split('-')[0]} {" "}
+                              {game.genres.map(genre => genre.name).join(', ')}
+                            </div>
+                          </div>
+                          <div className='flex gap-4 items-center'>
+                            <button className='rounded border-[1px] border-neutral-400 p-1 text-neutral-500
+                            hover:bg-green-400 hover:text-white hover:border-green-400'>
+                              $59.99</button>
+                          </div>
                         </li>})}
             </ul>
-          </div>
+          </div>}
           </>
           :
           <nav className='flex-1 animate-open hidden md:block font-semibold'>
