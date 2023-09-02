@@ -66,16 +66,16 @@ const Root = ({cart, setCart, allGames}) => {
         <div className="max-w-screen-lg flex flex-1 gap-3 items-center justify-between">
           {isSearchBarOpen ?
           <>
-          <div  data-testid = "overlay" className='z-[101] fixed top-0 left-0 w-full h-full bg-black opacity-40' onClick={closeSearchBar}></div>
+          <div  data-testid = "overlay" className='z-[101] fixed top-0 left-0 w-full h-full' onClick={closeSearchBar}></div>
           <div className='z-[102] flex flex-1 gap-2 items-center animate-open relative'>
             <Icon path={mdiMagnify} size={1} />
-            <input type="search" name="gameSearch" value={searchInput} onChange={handleSearchInputChange}
+            <input type="search" autoComplete='off' name="gameSearch" value={searchInput} onChange={handleSearchInputChange}
             className='w-full bg-transparent border-b-neutral-700 border-b-[1px]
             focus:outline-none'></input>
           </div>
           {searchInput.length > 1 &&
-          <div className='z-[102] absolute top-[60px] text-black bg-white p-3 animate-openfast
-          flex flex-col lg:min-w-[500px] rounded'>
+          <div className='z-[102] lg:absolute lg:top-[60px] top-[55px] text-black bg-white p-3 animate-openfast
+          flex flex-col lg:max-w-[500px] rounded fixed left-0 lg:left-auto w-full h-full lg:h-auto'>
             <h2 className='font-semibold text-xl mb-2'>
               {searchResults.length} Games found
             </h2>
@@ -110,11 +110,11 @@ const Root = ({cart, setCart, allGames}) => {
           </nav>
           }
           <div className='flex gap-5 relative flex-1 justify-end'>
-            <button onClick={toggleCart} aria-label='cart' className='flex items-center hover:text-neutral-50'>
+            <button onClick={toggleCart} aria-label='cart' className='z-[102] flex items-center hover:text-neutral-50'>
               <Icon path={mdiCartOutline} size={1} /> 0
             </button>
             {isSearchBarOpen ?
-            <button onClick={closeSearchBar} aria-label='close-search' className='hover:text-neutral-50'>
+            <button onClick={closeSearchBar} aria-label='close-search' className='z-[101] hover:text-neutral-50'>
             <Icon path={mdiClose} size={1} />
             </button>
             :
