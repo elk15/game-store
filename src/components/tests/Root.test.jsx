@@ -1,7 +1,8 @@
 import {  render, screen, cleanup } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect } from "vitest";
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, json } from 'react-router-dom';
+import { vi } from 'vitest'
 import Root from "../Root";
 
 describe("Header", () => {
@@ -71,6 +72,23 @@ describe("Search Bar", () => {
         await user.click(closeBtn);
 
         expect(screen.getByRole('navigation')).toBeInTheDocument();
+    })
+
+    it("search displays results correctly", async () => {
+        const user = userEvent.setup();
+        const allGames = [{id : 1, name: 'The Game', released: '2022-01-02', genres: [{name: 'RPG'}]}];
+        render(
+            <BrowserRouter>
+                <Root allGames={allGames}/>
+            </BrowserRouter>
+        );
+        const openBtn = screen.getByLabelText('open-search');
+
+        await user.click(openBtn);
+        const searchInput = screen.getByRole('searchbox')
+        await user.type(searchInput, 'The');
+
+        expect(screen.getByText("The Game")).toBeInTheDocument();
     })
 })
 

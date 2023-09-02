@@ -74,7 +74,7 @@ exports[`Header > renders Header 1`] = `
       >
         <button
           aria-label="cart"
-          class="flex items-center hover:text-neutral-50"
+          class="z-[102] flex items-center hover:text-neutral-50"
         >
           <svg
             role="presentation"
