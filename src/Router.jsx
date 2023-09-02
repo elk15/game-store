@@ -54,10 +54,16 @@ const Router = () => {
         }
     }
 
+    const removeFromCart = (e) => {
+        const gameId = e.currentTarget.dataset.id;
+        const newCart = cart.filter((game) => game.id != gameId);
+        setCart(newCart);
+    }
+
     const router = createBrowserRouter([
         {
             path: "/",
-            element: <Root cart={cart} allGames={allGames} addItemToCart={addItemToCart} />,
+            element: <Root cart={cart} allGames={allGames} addItemToCart={addItemToCart} removeFromCart={removeFromCart}/>,
             errorElement: <ErrorPage />,
             children: [
                 {

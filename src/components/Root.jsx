@@ -8,7 +8,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 
-const Root = ({cart, allGames, addItemToCart}) => {
+const Root = ({cart, allGames, addItemToCart, removeFromCart}) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -173,7 +173,7 @@ const Root = ({cart, allGames, addItemToCart}) => {
                               <div className='flex flex-col items-start'>
                                 <h2 className='font-semibold'>{item.name}</h2>
                                 <button className='text-slate-600 text-sm underline decoration-solid decoration-gray-600' 
-                                data-id={item.id}>
+                                data-id={item.id} onClick={removeFromCart}>
                                   Remove
                                 </button>
                               </div>
@@ -216,7 +216,8 @@ const Root = ({cart, allGames, addItemToCart}) => {
 Root.propTypes = {
   cart: PropTypes.array,
   allGames: PropTypes.array,
-  addItemToCart: PropTypes.func
+  addItemToCart: PropTypes.func,
+  removeFromCart: PropTypes.func
 }
 
 export default Root;
