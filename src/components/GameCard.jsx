@@ -8,7 +8,7 @@ const GameCard = ({image, title, id}) => {
         <div className='w-1/4 min-w-[180px] max-w-[256px] bg-[#ededed] shadow cursor-pointer flex flex-col'>
             <img className='object-fill flex-1
             max-w-[256px] w-full min-w-[180px] 
-            max-h-[144px]' 
+            lg:min-h-[144px] md:min-h-[120px] min-h-[100px]' 
             src={image == null ? './placeholder.gif' : image} alt={title}/>
             <div className='px-3 py-2 flex flex-col flex-1 justify-between'>
                 <h1 >{title}</h1>
