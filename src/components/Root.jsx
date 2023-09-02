@@ -6,11 +6,14 @@ import { mdiMenu } from '@mdi/js';
 import { NavLink, Outlet } from 'react-router-dom';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 
-const Root = ({cart, setCart}) => {
+const Root = ({cart, setCart, allGames}) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [searchInput, setSearchInput] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
 
   const toggleCart = () => {
     setIsCartOpen(isCartOpen ? false : true);
@@ -36,6 +39,26 @@ const Root = ({cart, setCart}) => {
     setIsMobileMenuOpen(false);
   }
 
+  const handleSearchInputChange = (e) => {
+    setSearchInput(e.target.value);
+  }
+
+  
+
+  useEffect(() => {
+    if (searchInput.length > 1) {
+      const searchForGames = (query) => {
+        return allGames.filter((game) => game.name.toLowerCase().includes(query.toLowerCase()));
+      }
+      setSearchResults(searchForGames(searchInput));
+    }
+
+    if (searchInput.length < 2) {
+      setSearchResults([]);
+    }
+
+  }, [searchInput, allGames])
+
   return (
     <>
       <header className='z-[100] opacity-95 flex justify-center bg-neutral-900  py-4 px-3 text-neutral-300 sticky top-0 text-sm '>
@@ -45,10 +68,18 @@ const Root = ({cart, setCart}) => {
           <div  data-testid = "overlay" className='z-[101] fixed top-0 left-0 w-full h-full' onClick={closeSearchBar}></div>
           <div className='z-[102] flex flex-1 gap-2 items-center animate-open relative'>
             <Icon path={mdiMagnify} size={1} />
-            <input type="search" name="gameSearch" 
+            <input type="search" name="gameSearch" value={searchInput} onChange={handleSearchInputChange}
             className='w-full bg-transparent border-b-neutral-700 border-b-[1px]
             focus:outline-none'></input>
-            </div>
+          </div>
+          <div>
+            <ul>
+              {searchResults.map((game) => {
+                return  <li key={game.id}>
+                          {game.name} {}
+                        </li>})}
+            </ul>
+          </div>
           </>
           :
           <nav className='flex-1 animate-open hidden md:block font-semibold'>
@@ -129,7 +160,8 @@ const Root = ({cart, setCart}) => {
 
 Root.propTypes = {
   cart: PropTypes.array,
-  setCart: PropTypes.func
+  setCart: PropTypes.func,
+  allGames: PropTypes.array
 }
 
 export default Root;
