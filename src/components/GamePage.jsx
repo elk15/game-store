@@ -4,11 +4,11 @@ import { useParams } from "react-router-dom";
 import { mdiStar } from '@mdi/js';
 import Icon from '@mdi/react';
 import { mdiCartPlus } from '@mdi/js';
-import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
+import { buildStyles, CircularProgressbar, CircularProgressbarWithChildren } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import Flicking, { ViewportSlot } from "@egjs/react-flicking";
 import "@egjs/react-flicking/dist/flicking.css";
-import { Arrow, Fade, Parallax } from "@egjs/flicking-plugins";
+import { Arrow} from "@egjs/flicking-plugins";
 import "@egjs/flicking-plugins/dist/arrow.css";
 
 const pickColor = (title) => {
@@ -87,7 +87,7 @@ const GamePage = () => {
     const plugins = [new Arrow()];
 
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-3">
             <Flicking
             align='center'
             defaultIndex={0}
@@ -114,11 +114,11 @@ const GamePage = () => {
                             </div>
                     }
                 <ViewportSlot>
-                    <span className="flicking-arrow-prev is-circle"></span>
-                    <span className="flicking-arrow-next is-circle"></span>
+                    <span className="flicking-arrow-prev is-thin"></span>
+                    <span className="flicking-arrow-next is-thin"></span>
                 </ViewportSlot>
             </Flicking>
-            {/* {gameInfo?
+            {gameInfo?
             <>
             <div>
                 <h1>{gameInfo.name}</h1>
@@ -185,18 +185,28 @@ const GamePage = () => {
                     </ul>
                 </section>
             </div>
-            <section>
-                <h3>
+            <section className="p-4 mb-10">
+                <h3 className="text-xl font-semibold mb-1">
                     Ratings
                 </h3>
-                <div>
+                <hr className="mb-4 border-neutral-400 border-[1px] rounded"/>
+                <div className="flex justify-between">
                     {
                         gameInfo.ratings.map((rating) => {
-                            return (<CircularProgressbar key={rating.id} value={rating.percent} 
-                            styles={buildStyles({pathColor: pickColor(rating.title), textColor: pickColor(rating.title)})}>
-                                    <p>{rating.percent}%</p>
-                                    <p>{rating.title}</p>
-                                </CircularProgressbar>)
+                            return (
+                            <div key={rating.id} className="max-w-[200px] drop-shadow">
+                                <CircularProgressbarWithChildren value={rating.percent} background backgroundPadding={6}
+                                styles={buildStyles({pathColor: '#FFF',  trailColor: "transparent",
+                                backgroundColor: pickColor(rating.title),})}>
+                                        <p className='font-semibold text-xl text-white' >
+                                            {rating.percent}%
+                                            </p>
+                                        <p className='font-semibold text-xl text-white'>
+                                            {rating.title}
+                                            </p>
+                                </CircularProgressbarWithChildren>
+                            </div>
+                                )
                         })
                     }
                     
@@ -206,7 +216,7 @@ const GamePage = () => {
         </>
         :
         <p>Loading...</p> 
-        } */}
+        }
         </div>
     )
 }
