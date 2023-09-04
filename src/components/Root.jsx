@@ -81,20 +81,25 @@ const Root = ({cart, allGames, addItemToCart, removeFromCart}) => {
             </h2>
             <ul>
               {searchResults.map((game) => {
-                return  <li key={game.id} data-id={game.id} onClick={addItemToCart}
-                className='flex cursor-pointer p-3 justify-between border-t-2'>
-                          <div>
-                            <h3 className="font-semibold">{game.name}</h3>
-                            <div className='text-neutral-500'>
-                              {game.released.split('-')[0]} {" "}
-                              {game.genres.map(genre => genre.name).join(', ')}
+                return  <li key={game.id}>
+                          <NavLink to={`/games/${game.id}`}>
+                            <div className='flex cursor-pointer p-3 justify-between border-t-2'>
+                              <div>
+                                <h3 className="font-semibold">{game.name}</h3>
+                                <div className='text-neutral-500'>
+                                  {game.released.split('-')[0]} {" "}
+                                  {game.genres.map(genre => genre.name).join(', ')}
+                                </div>
+                              </div>
+                              <div className='flex gap-4 items-center'>
+                                <button className='rounded border-[1px] border-neutral-400 p-1 text-neutral-500
+                                hover:bg-green-400 hover:text-white hover:border-green-400' 
+                                onClick={addItemToCart} data-id={game.id}>
+                                  $59.99
+                                </button>
+                              </div>
                             </div>
-                          </div>
-                          <div className='flex gap-4 items-center'>
-                            <button className='rounded border-[1px] border-neutral-400 p-1 text-neutral-500
-                            hover:bg-green-400 hover:text-white hover:border-green-400'>
-                              $59.99</button>
-                          </div>
+                          </NavLink>
                         </li>})}
             </ul>
           </div>}
@@ -167,18 +172,22 @@ const Root = ({cart, allGames, addItemToCart, removeFromCart}) => {
                       </div>
                       <ul>
                       {cart.map((item) => {
-                        return <li key={item.id} className="border-t-[1px] border-neutral-400 text-black p-1 flex gap-2 cursor-pointer">
-                            <img src={item.background_image} alt="" className='w-[100px]'/>
-                            <div className='flex justify-between flex-1'>
-                              <div className='flex flex-col items-start'>
-                                <h2 className='font-semibold'>{item.name}</h2>
-                                <button className='text-slate-600 text-sm underline decoration-solid decoration-gray-600' 
-                                data-id={item.id} onClick={removeFromCart}>
-                                  Remove
-                                </button>
+                        return <li key={item.id} >
+                            <NavLink to={`games/${item.id}`}>
+                              <div className="border-t-[1px] border-neutral-400 text-black p-1 flex gap-2 cursor-pointer">
+                                <img src={item.background_image} alt="" className='w-[100px]'/>
+                                <div className='flex justify-between flex-1'>
+                                  <div className='flex flex-col items-start'>
+                                    <h2 className='font-semibold'>{item.name}</h2>
+                                    <button className='text-slate-600 text-sm underline decoration-solid decoration-gray-600'
+                                    data-id={item.id} onClick={removeFromCart}>
+                                      Remove
+                                    </button>
+                                  </div>
+                                  <p className='ml-3 px-2 text-slate-600 font-semibold'>$59.99</p>
+                                </div>
                               </div>
-                              <p className='ml-3 px-2 text-slate-600 font-semibold'>$59.99</p>
-                            </div>
+                            </NavLink>
                           </li>;
                       })}
                       </ul>

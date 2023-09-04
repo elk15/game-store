@@ -2,9 +2,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Root from "./components/Root";
 import ErrorPage from "./components/ErrorPage";
 import Home from "./components/Home";
-import GamesPage from "./components/GamesPage";
+import GenrePage from "./components/GenrePage";
 import useGameData from "./GameData";
 import { useState } from "react";
+import GamePage from "./components/GamePage";
 
 const doesItContainGame = (cart, id) => {
     for(let i = 0; i < cart.length; i++) {
@@ -47,6 +48,8 @@ const Router = () => {
     })
 
     const addItemToCart = (e) => {
+        e.preventDefault()
+        e.stopPropagation();
         const gameId = e.currentTarget.dataset.id;
         if (!doesItContainGame(cart, gameId)) {
             const game = allGames.find((game) => game.id == gameId);
@@ -55,6 +58,8 @@ const Router = () => {
     }
 
     const removeFromCart = (e) => {
+        e.preventDefault()
+        e.stopPropagation();
         const gameId = e.currentTarget.dataset.id;
         const newCart = cart.filter((game) => game.id != gameId);
         setCart(newCart);
@@ -63,22 +68,32 @@ const Router = () => {
     const router = createBrowserRouter([
         {
             path: "/",
-            element: <Root cart={cart} allGames={allGames} addItemToCart={addItemToCart} removeFromCart={removeFromCart}/>,
+            element: <Root cart={cart} 
+            allGames={allGames} 
+            addItemToCart={addItemToCart} 
+            removeFromCart={removeFromCart}/>,
             errorElement: <ErrorPage />,
             children: [
                 {
                     errorElement: <ErrorPage />,
                     children: [
-                        {index: true, element: <Home 
+                        {   
+                            index: true, 
+                            element: <Home 
                             addItemToCart={addItemToCart} 
                             carouselData={carouselData} 
                             newReleasesData={newReleasesData}
                             hotPicksData={hotPicksData}
                             bestSellingData={bestSellingData}
-                            upcomingData={upcomingData}/>},
+                            upcomingData={upcomingData}/>
+                        },
                         {
                             path: "games/:gameGenre",
-                            element: <GamesPage />
+                            element: <GenrePage />
+                        },
+                        {
+                            path: "games/:gameId",
+                            element: <GamePage />
                         },
                     ]
                 }
