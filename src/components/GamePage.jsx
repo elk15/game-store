@@ -192,7 +192,7 @@ const GamePage = () => {
                     Ratings
                 </h3>
                 <hr className="mb-4 border-neutral-400 border-[1px] rounded"/>
-                <div className="flex justify-between">
+                <div className="flex justify-center lg:justify-between flex-wrap items-center gap-5">
                     {
                         gameInfo.ratings.map((rating) => {
                             return (
