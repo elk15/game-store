@@ -119,17 +119,18 @@ const GamePage = () => {
                 </ViewportSlot>
             </Flicking>
             {gameInfo?
-            <div className="lg:max-w-[1024px] ">
-            <div>
-                <h1>{gameInfo.name}</h1>
-                <p>
+            <div className="lg:max-w-[1024px]">
+            <div className="p-5">
+                <h1 className="text-3xl font-semibold">{gameInfo.name}</h1>
+                <p className="flex items-center text-neutral-600">
                     <Icon path={mdiStar} size={1} />{gameInfo.metacritic}/100 | {gameInfo.esrb_rating.name}
                 </p>
             </div>
-            <div>
-                <h2>$59.99</h2>
-                <button>                        
-                    <Icon path={mdiCartPlus} size={1} color={'white'}/> Add to cart</button>
+            <div className="flex items-center justify-between mx-5 p-3 gap-5 bg-white shadow rounded-sm max-w-[250px]">
+                <h2 className="text-lg font-semibold">$59.99</h2>
+                <button className="bg-green-500 hover:brightness-110 rounded p-2 flex items-center text-white ">                        
+                    <Icon path={mdiCartPlus} size={1} color={'white'}/> Add to cart
+                </button>
             </div>
             <div className="flex flex-col lg:flex-row gap-20 p-5">
                 <section className="flex-1">
