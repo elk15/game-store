@@ -6,7 +6,8 @@ import { NavLink } from 'react-router-dom';
 
 const GameCard = ({image, title, id, addItemToCart}) => {
     return (
-        <NavLink to={`games/${id}`} className='w-1/4 min-w-[180px] max-w-[256px] bg-[#ededed] shadow cursor-pointer flex flex-col'>
+        <NavLink to={`games/${id}`} className='w-1/4 min-w-[180px] max-w-[256px] bg-[#ededed] shadow cursor-pointer flex flex-col
+        md:h-[250px] h-[225px]'>
             <img className='object-fill flex-1
             max-w-[256px] w-full min-w-[180px]
             lg:min-h-[144px] md:min-h-[120px] min-h-[100px]'
