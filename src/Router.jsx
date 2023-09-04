@@ -93,7 +93,7 @@ const Router = () => {
                         },
                         {
                             path: "games/:gameId",
-                            element: <GamePage/>,
+                            element: <GamePage addItemToCart={addItemToCart}/>,
                         },
                     ]
                 }

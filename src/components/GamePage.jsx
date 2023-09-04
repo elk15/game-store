@@ -10,6 +10,8 @@ import Flicking, { ViewportSlot } from "@egjs/react-flicking";
 import "@egjs/react-flicking/dist/flicking.css";
 import { Arrow} from "@egjs/flicking-plugins";
 import "@egjs/flicking-plugins/dist/arrow.css";
+import PropTypes from 'prop-types';
+
 
 const pickColor = (title) => {
     let color = '';
@@ -80,7 +82,7 @@ const useGameInfo = (id) => {
 }
 
 
-const GamePage = () => {
+const GamePage = ({addItemToCart}) => {
     const {gameId} = useParams();
     const { gameInfo, screenshots, trailers } = useGameInfo(gameId);
 
@@ -123,12 +125,12 @@ const GamePage = () => {
             <div className="p-5">
                 <h1 className="text-3xl font-semibold">{gameInfo.name}</h1>
                 <p className="flex items-center text-neutral-600">
-                    <Icon path={mdiStar} size={1} />{gameInfo.metacritic}/100 | {gameInfo.esrb_rating.name}
+                    <Icon path={mdiStar} size={1} />{gameInfo.metacritic}/100 | {gameInfo.esrb_rating ? gameInfo.esrb_rating.name : 'Unrated'}
                 </p>
             </div>
             <div className="flex items-center justify-between mx-5 p-3 gap-5 bg-white shadow rounded-sm max-w-[250px]">
                 <h2 className="text-lg font-semibold">$59.99</h2>
-                <button className="bg-green-500 hover:brightness-110 rounded p-2 flex items-center text-white ">                        
+                <button className="bg-green-500 hover:brightness-110 rounded p-2 flex items-center text-white" onClick={addItemToCart} data-id={gameId}>                        
                     <Icon path={mdiCartPlus} size={1} color={'white'}/> Add to cart
                 </button>
             </div>
@@ -223,5 +225,9 @@ const GamePage = () => {
         </div>
     )
 }
+
+GamePage.propTypes = {
+    addItemToCart: PropTypes.func,
+  }
 
 export default GamePage;
