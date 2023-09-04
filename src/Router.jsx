@@ -88,12 +88,12 @@ const Router = () => {
                             upcomingData={upcomingData}/>
                         },
                         {
-                            path: "games/:gameGenre",
+                            path: ":gameGenre",
                             element: <GenrePage />
                         },
                         {
                             path: "games/:gameId",
-                            element: <GamePage />
+                            element: <GamePage/>,
                         },
                     ]
                 }

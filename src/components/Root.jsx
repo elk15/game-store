@@ -108,10 +108,10 @@ const Root = ({cart, allGames, addItemToCart, removeFromCart}) => {
           <nav className='flex-1 animate-open hidden md:block font-semibold'>
             <ul className='flex gap-7'>
               <li className='hover:text-neutral-50 tracking-wide'> <NavLink to={'/'}> HOME </NavLink> </li>
-              <li className='hover:text-neutral-50 tracking-wide'><NavLink to={'/games/rpg'}> RPG </NavLink></li>
-              <li className='hover:text-neutral-50 tracking-wide'><NavLink to={'/games/strategy'}> STRATEGY </NavLink></li>
-              <li className='hover:text-neutral-50 tracking-wide'><NavLink to={'/games/shooters'}> SHOOTERS </NavLink></li>
-              <li className='hover:text-neutral-50 tracking-wide'><NavLink to={'/games/action'}> ACTION </NavLink></li>
+              <li className='hover:text-neutral-50 tracking-wide'><NavLink to={'/rpg'}> RPG </NavLink></li>
+              <li className='hover:text-neutral-50 tracking-wide'><NavLink to={'/strategy'}> STRATEGY </NavLink></li>
+              <li className='hover:text-neutral-50 tracking-wide'><NavLink to={'/shooters'}> SHOOTERS </NavLink></li>
+              <li className='hover:text-neutral-50 tracking-wide'><NavLink to={'/action'}> ACTION </NavLink></li>
             </ul>
           </nav>
           }

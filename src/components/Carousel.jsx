@@ -13,7 +13,7 @@ const Carousel = ({carouselData, addItemToCart}) => {
     return (
         <Flicking
             align='center'
-            defaultIndex={2}
+            defaultIndex={0}
             circular={true}
             plugins={plugins}
             inputType= {["touch", "mouse"]}

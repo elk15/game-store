@@ -5,7 +5,7 @@ const GamesPage = () => {
 
     return (
         <div >        
-            {gameGenre}
+            {gameGenre} hesdf
         </div>
     )
 }
