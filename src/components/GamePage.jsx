@@ -87,7 +87,7 @@ const GamePage = () => {
     const plugins = [new Arrow()];
 
     return (
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 items-center">
             <Flicking
             align='center'
             defaultIndex={0}
@@ -119,7 +119,7 @@ const GamePage = () => {
                 </ViewportSlot>
             </Flicking>
             {gameInfo?
-            <>
+            <div className="lg:max-w-[1024px] ">
             <div>
                 <h1>{gameInfo.name}</h1>
                 <p>
@@ -131,53 +131,55 @@ const GamePage = () => {
                 <button>                        
                     <Icon path={mdiCartPlus} size={1} color={'white'}/> Add to cart</button>
             </div>
-            <div className="flex flex-wrap">
-                <section>
-                    <h3>
+            <div className="flex flex-col lg:flex-row gap-20 p-5">
+                <section className="flex-1">
+                    <h3 className="text-xl font-semibold mb-1 text-neutral-600">
                         Description
                     </h3>
+                    <hr className="mb-4 border-neutral-400 border-[1px] rounded"/>
                     <p>
                         {gameInfo.description_raw}
                     </p>
                 </section>
-                <section>
-                    <h3>
+                <section className="flex-1 lg:max-w-[300px]">
+                    <h3 className="text-xl font-semibold mb-1 text-neutral-600">
                         Game details
                     </h3>
-                    <ul>
-                        <li>
-                            <h4>Genre:</h4>
+                    <hr className="mb-4 border-neutral-400 border-[1px] rounded"/>
+                    <ul className="flex flex-col gap-3">
+                        <li className="flex gap-2">
+                            <h4 className="font-semibold text-neutral-500">Genre:</h4>
                             <p>
                                 {gameInfo.genres.map((genre) => genre.name).join(', ')}
                             </p>
                         </li>
-                        <li>
-                            <h4>Release date:</h4>
+                        <li className="flex gap-2">
+                            <h4 className="font-semibold text-neutral-500">Release date:</h4>
                             <p>
                                 {gameInfo.released}
                             </p>
                         </li>
-                        <li>
-                            <h4>Platform:</h4>
+                        <li className="flex gap-2">
+                            <h4 className="font-semibold text-neutral-500">Platform:</h4>
                             <p>
                                 {gameInfo.parent_platforms.map((item) => item.platform.name).join(', ')} 
                             </p>
                         </li>
-                        <li>
-                            <h4>Developers:</h4>
+                        <li className="flex gap-2">
+                            <h4 className="font-semibold text-neutral-500">Developers:</h4>
                             <p>
                                 {gameInfo.developers.map((dev) => dev.name).join(', ')} 
                             </p>
                         </li>
                         {
                             gameInfo.website !== "" &&
-                            <li>
-                                <h4>Website:</h4>
-                                <a href={`${gameInfo.website}`}>Official Site</a>
+                            <li className="flex gap-2">
+                                <h4 className="font-semibold text-neutral-500">Website:</h4>
+                                <a href={`${gameInfo.website}`} className="underline">Official Site</a>
                             </li>
                         }
-                        <li>
-                            <h4>Tags:</h4>
+                        <li className="flex gap-2">
+                            <h4 className="font-semibold text-neutral-500">Tags:</h4>
                             <p>
                                 {gameInfo.tags.map((tag) => tag.name).join(', ')}
                             </p>
@@ -185,8 +187,8 @@ const GamePage = () => {
                     </ul>
                 </section>
             </div>
-            <section className="p-4 mb-10">
-                <h3 className="text-xl font-semibold mb-1">
+            <section className="mb-10 p-5">
+                <h3 className="text-xl font-semibold mb-1 text-neutral-600">
                     Ratings
                 </h3>
                 <hr className="mb-4 border-neutral-400 border-[1px] rounded"/>
@@ -213,7 +215,7 @@ const GamePage = () => {
                 </div>
             </section>
         
-        </>
+        </div>
         :
         <p>Loading...</p> 
         }
