@@ -8,7 +8,7 @@ const SliderImage = forwardRef(function SliderImage({title, image, id, addItemTo
     return (
         <NavLink to={`/games/${id}`}>
             <div ref={ref} className="mx-2">
-                <img className="lg:w-[1024px] lg:h-[600px] sm:w-[500px] sm:h-[320px] w-[360px] h-[200px] rounded-md object-fit shadow"
+                <img className="lg:w-[1024px] lg:h-[600px] sm:w-[500px] sm:h-[320px] w-[360px] h-[200px] rounded-md shadow"
                 src={image == null ? './placeholder.gif' : image} alt={title} />
                 <div className='relative flex lg:flex-row flex-col lg:justify-between lg:items-center
                 lg:gap-3 text-white lg:bottom-[100px] bottom-[80px] lg:px-10 px-2'>

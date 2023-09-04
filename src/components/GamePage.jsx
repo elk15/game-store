@@ -6,8 +6,10 @@ import Icon from '@mdi/react';
 import { mdiCartPlus } from '@mdi/js';
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import Flicking from "@egjs/react-flicking";
+import Flicking, { ViewportSlot } from "@egjs/react-flicking";
 import "@egjs/react-flicking/dist/flicking.css";
+import { Arrow, Fade, Parallax } from "@egjs/flicking-plugins";
+import "@egjs/flicking-plugins/dist/arrow.css";
 
 const pickColor = (title) => {
     let color = '';
@@ -82,13 +84,7 @@ const GamePage = () => {
     const {gameId} = useParams();
     const { gameInfo, screenshots, trailers } = useGameInfo(gameId);
 
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1
-      };
+    const plugins = [new Arrow()];
 
     return (
         <div className="flex flex-col">
@@ -96,46 +92,32 @@ const GamePage = () => {
             align='center'
             defaultIndex={0}
             circular={true}
+            plugins={plugins}
             >
             {trailers &&
                 trailers.results.map((item) => {
-                    return <div key={item.id}>
-                        <video  width="320" height="240" controls>
+                    return <div key={item.id} className="mx-1">
+                        <video  width="320" height="240" controls className="lg:w-[1024px] lg:h-[600px] sm:w-[500px] sm:h-[320px] w-[360px] h-[200px] shadow">
                                 <source src={item.data.max} type="video/mp4"/>
                                 Your browser does not support the video tag.
                             </video>
                             </div>})}
             {screenshots &&
                 screenshots.results.map((item) => {
-                        return <div key={item.id}><img  src={item.image} alt=""/></div>
+                        return <div key={item.id} className="mx-1">
+                            <img  className="lg:w-[1024px] lg:h-[600px] sm:w-[500px] sm:h-[320px] w-[360px] h-[200px] shadow" src={item.image} alt=""/>
+                            </div>
                     })}
             {(!screenshots && !trailers) &&
-                        <div><img src={"/placeholder.gif"} alt="placeholder"/></div>
-                    }
-
-            </Flicking>
-                {/* <Slider {...settings}>
-                    {trailers &&
-
-                        trailers.results.map((item) => {
-                            return <div key={item.id}>
-                                <video  width="320" height="240" controls>
-                                        <source src={item.data.max} type="video/mp4"/>
-                                        Your browser does not support the video tag.
-                                    </video>
+                        <div>
+                            <img src={"/placeholder.gif"} alt="placeholder" className="lg:w-[1024px] lg:h-[600px] sm:w-[500px] sm:h-[320px] w-[360px] h-[200px] shadow"/>
                             </div>
-                        })
                     }
-                    {screenshots &&
-                        screenshots.results.map((item) => {
-                            return <div key={item.id}><img  src={item.image} alt=""/></div>
-                        })
-
-                    }
-                    {(!screenshots && !trailers) &&
-                        <div><img src="./placeholder.gif" alt="placeholder"/></div>
-                    }
-                </Slider> */}
+                <ViewportSlot>
+                    <span className="flicking-arrow-prev is-circle"></span>
+                    <span className="flicking-arrow-next is-circle"></span>
+                </ViewportSlot>
+            </Flicking>
             {/* {gameInfo?
             <>
             <div>
