@@ -110,7 +110,7 @@ const Root = ({cart, allGames, addItemToCart, removeFromCart}) => {
               <li className='hover:text-neutral-50 tracking-wide'> <NavLink to={'/'}> HOME </NavLink> </li>
               <li className='hover:text-neutral-50 tracking-wide'><NavLink to={'/rpg'}> RPG </NavLink></li>
               <li className='hover:text-neutral-50 tracking-wide'><NavLink to={'/strategy'}> STRATEGY </NavLink></li>
-              <li className='hover:text-neutral-50 tracking-wide'><NavLink to={'/shooters'}> SHOOTERS </NavLink></li>
+              <li className='hover:text-neutral-50 tracking-wide'><NavLink to={'/shooter'}> SHOOTERS </NavLink></li>
               <li className='hover:text-neutral-50 tracking-wide'><NavLink to={'/action'}> ACTION </NavLink></li>
             </ul>
           </nav>
@@ -173,7 +173,7 @@ const Root = ({cart, allGames, addItemToCart, removeFromCart}) => {
                       <ul>
                       {cart.map((item) => {
                         return <li key={item.id} >
-                            <NavLink to={`games/${item.id}`}>
+                            <NavLink to={`/games/${item.id}`}>
                               <div className="border-t-[1px] border-neutral-400 text-black p-1 flex gap-2 cursor-pointer">
                                 <img src={item.background_image} alt="" className='w-[100px]'/>
                                 <div className='flex justify-between flex-1'>
@@ -209,7 +209,7 @@ const Root = ({cart, allGames, addItemToCart, removeFromCart}) => {
             <li className='hover:text-neutral-50 tracking-wide'> <NavLink to={'/'}> HOME </NavLink> </li>
             <li className='hover:text-neutral-50 tracking-wide'><NavLink to={'/games/rpg'}> RPG </NavLink></li>
             <li className='hover:text-neutral-50 tracking-wide'><NavLink to={'/games/strategy'}> STRATEGY </NavLink></li>
-            <li className='hover:text-neutral-50 tracking-wide'><NavLink to={'/games/shooters'}> SHOOTERS </NavLink></li>
+            <li className='hover:text-neutral-50 tracking-wide'><NavLink to={'/games/shooter'}> SHOOTERS </NavLink></li>
             <li className='hover:text-neutral-50 tracking-wide'><NavLink to={'/games/action'}> ACTION </NavLink></li>
           </ul>
         </nav>

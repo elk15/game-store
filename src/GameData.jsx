@@ -7,7 +7,8 @@ const useGameData = () => {
     const [bestSellingData, setBestSellingData] = useState(null);
     const [upcomingData, setUpcomingData] = useState(null);
 
-
+    const [pageOne, setPageOne] = useState(null);
+    const [pageTwo, setPageTwo] = useState(null);
 
     const today = new Date(Date.now());
     const sixMonthsAgo = new Date(today);
@@ -21,7 +22,6 @@ const useGameData = () => {
 
 
     useEffect(() => {
-        // fetch carousel data
         fetch(`https://api.rawg.io/api/games?key=96459fc2695a4ad8b053552c09d0c6d4&dates=${formattedPast},${formattedToday}&page_size=5&metacritic=85,100&ordering=-metacritic`)
         .then((response) => {
             if (response.status >= 400) {
@@ -77,9 +77,33 @@ const useGameData = () => {
             setUpcomingData(response.results)
         })
 
+        fetch(`https://api.rawg.io/api/games?key=96459fc2695a4ad8b053552c09d0c6d4&genres=rpg,action,shooter,strategy&dates=2010-01-01,${formattedToday}&page_size=40&ordering=-metacritic`)
+        .then((response) => {
+            if (response.status >= 400) {
+                throw new Error("server error");
+            }
+            return response.json();
+        })
+        .then((response) => {
+            setPageOne(response.results);
+        })
+
+        fetch(`https://api.rawg.io/api/games?key=96459fc2695a4ad8b053552c09d0c6d4&genres=rpg,action,shooter,strategy&dates=2010-01-01,${formattedToday}&page_size=40&ordering=-metacritic&page=2`)
+        .then((response) => {
+            if (response.status >= 400) {
+                throw new Error("server error");
+            }
+            return response.json();
+        })
+        .then((response) => {
+            setPageTwo(response.results);
+        })
+
+
+
     }, [])
 
-    return {carouselData, newReleasesData, hotPicksData, bestSellingData, upcomingData};
+    return {upcomingData, pageOne, pageTwo, carouselData, bestSellingData, newReleasesData, hotPicksData};
 }
 
 export default useGameData;

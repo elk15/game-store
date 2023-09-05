@@ -20,9 +20,12 @@ const Router = () => {
     let allGames = [];
     const uniqueIds = [];
     const [cart, setCart] = useState([]);
-    const {carouselData, newReleasesData, hotPicksData, bestSellingData, upcomingData} = useGameData();
+    const {carouselData, bestSellingData, newReleasesData, hotPicksData, upcomingData, pageOne, pageTwo} = useGameData();
     if (carouselData) {
         allGames = [...allGames, ...carouselData];
+    }
+    if (bestSellingData) {
+        allGames = [...allGames, ...bestSellingData];
     }
     if (newReleasesData) {
         allGames = [...allGames, ...newReleasesData];
@@ -30,12 +33,16 @@ const Router = () => {
     if (hotPicksData) {
         allGames = [...allGames, ...hotPicksData];
     }
-    if (bestSellingData) {
-        allGames = [...allGames, ...bestSellingData];
-    }
     if (upcomingData) {
         allGames = [...allGames, ...upcomingData];
     }
+    if (pageOne) {
+        allGames = [...allGames, ...pageOne];
+    }
+    if (pageTwo) {
+        allGames = [...allGames, ...pageTwo];
+    }
+
 
     allGames = allGames.filter((game) => {
         const isDuplicate = uniqueIds.includes(game.id);
@@ -89,7 +96,7 @@ const Router = () => {
                         },
                         {
                             path: ":gameGenre",
-                            element: <GenrePage />
+                            element: <GenrePage games={allGames} addItemToCart={addItemToCart}/>
                         },
                         {
                             path: "games/:gameId",
