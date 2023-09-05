@@ -2,6 +2,7 @@
 
 A video game store build with React, Tailwind, React Router, React testing library.
 Data is fetched from an API (https://rawg.io/apidocs).
+Deployed here: https://game-store-elk15.netlify.app/
 
 ## Features
 
