@@ -95,6 +95,7 @@ const GamePage = ({addItemToCart}) => {
             defaultIndex={0}
             circular={true}
             plugins={plugins}
+            inputType= {["touch", "mouse"]}
             >
             {trailers &&
                 trailers.results.map((item) => {
@@ -124,7 +125,7 @@ const GamePage = ({addItemToCart}) => {
             <div className="lg:max-w-[1024px]">
             <div className="flex md:items-center md:flex-row flex-col items-start">
                 <div className="p-5">
-                    <h1 className="text-3xl font-semibold">{gameInfo.name}</h1>
+                    <h1 className="text-3xl font-semibold">{gameInfo.name.length > 41 ? gameInfo.name.slice(0, 41) : gameInfo.name}</h1>
                     <p className="flex items-center text-neutral-600">
                         <Icon path={mdiStar} size={1} />{gameInfo.metacritic}/100 | {gameInfo.esrb_rating ? gameInfo.esrb_rating.name : 'Unrated'}
                     </p>

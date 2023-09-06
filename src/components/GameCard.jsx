@@ -13,7 +13,7 @@ const GameCard = ({image, title, id, addItemToCart}) => {
             lg:min-h-[144px] md:min-h-[120px] min-h-[100px]'
             src={image == null ? './placeholder.gif' : image} alt={title}/>
             <div className='px-3 py-2 flex flex-col flex-1 justify-between'>
-                <h1 >{title}</h1>
+                <h1 >{title.length > 41 ? title.slice(0, 41) : title}</h1>
                 <div className='flex items-center gap-2 justify-end'>
                     <p>$59.00</p>
                     <button data-id={id} onClick={addItemToCart}
