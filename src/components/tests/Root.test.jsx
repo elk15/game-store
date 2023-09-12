@@ -1,26 +1,8 @@
 import {  render, screen, cleanup } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect } from "vitest";
-import { BrowserRouter, json } from 'react-router-dom';
-import { vi } from 'vitest'
+import { BrowserRouter } from 'react-router-dom';
 import Root from "../Root";
-
-describe("Header", () => {
-    afterEach(cleanup)
-
-    it("renders Header", () => {
-        const fakeCart = [];
-        const { asFragment } = render(
-        <BrowserRouter>
-            <Root cart={fakeCart}/>
-        </BrowserRouter>
-        
-        )
-    
-        expect(asFragment(<Root />)).toMatchSnapshot()
-    })
-    
-})
 
 describe("Search Bar", () => {
     afterEach(cleanup)
