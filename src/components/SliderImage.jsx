@@ -13,7 +13,7 @@ const SliderImage = forwardRef(function SliderImage({title, image, id, addItemTo
                 <div className='relative flex lg:flex-row flex-col lg:justify-between lg:items-center
                 lg:gap-3 text-white lg:bottom-[100px] bottom-[80px] lg:px-10 px-2'>
                     <h1 className='lg:text-3xl font-semibold drop-shadow-[0_35px_35px_rgba(0,0,0,0.8)] mix-blend-luminosity'>
-                        {title}
+                        {title.length > 41 ? title.slice(0, 41) : title}
                     </h1>
                     <div className='flex gap-3 items-center'>
                         <p className='lg:text-2xl font-semibold drop-shadow-[0_35px_35px_rgba(0,0,0,0.8)]'>
