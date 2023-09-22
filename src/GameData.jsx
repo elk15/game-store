@@ -22,7 +22,7 @@ const useGameData = () => {
 
 
     useEffect(() => {
-        fetch(`https://api.rawg.io/api/games?key=96459fc2695a4ad8b053552c09d0c6d4&dates=${formattedPast},${formattedToday}&page_size=5&metacritic=85,100&ordering=-metacritic`)
+        fetch(`https://api.rawg.io/api/games?key=${import.meta.env.VITE_API_KEY}&dates=${formattedPast},${formattedToday}&page_size=5&metacritic=85,100&ordering=-metacritic`)
         .then((response) => {
             if (response.status >= 400) {
                 throw new Error("server error");
@@ -33,7 +33,7 @@ const useGameData = () => {
             setCarouselData(response.results)
         })
 
-        fetch(`https://api.rawg.io/api/games?key=96459fc2695a4ad8b053552c09d0c6d4&dates=${formattedPast},${formattedToday}&genres=action,rpg,shooter,strategy&metacritic=65,100&page_size=8&ordering=-released`)
+        fetch(`https://api.rawg.io/api/games?key=${import.meta.env.VITE_API_KEY}&dates=${formattedPast},${formattedToday}&genres=action,rpg,shooter,strategy&metacritic=65,100&page_size=8&ordering=-released`)
         .then((response) => {
             if (response.status >= 400) {
                 throw new Error("server error");
@@ -44,7 +44,7 @@ const useGameData = () => {
             setNewReleasesData(response.results)
         })
 
-        fetch(`https://api.rawg.io/api/games?key=96459fc2695a4ad8b053552c09d0c6d4&genres=action,rpg,shooter,strategy&metacritic=75,100&page_size=8&ordering=-updated`)
+        fetch(`https://api.rawg.io/api/games?key=${import.meta.env.VITE_API_KEY}&genres=action,rpg,shooter,strategy&metacritic=75,100&page_size=8&ordering=-updated`)
         .then((response) => {
             if (response.status >= 400) {
                 throw new Error("server error");
@@ -55,7 +55,7 @@ const useGameData = () => {
             setHotPicksData(response.results)
         })
 
-        fetch(`https://api.rawg.io/api/games?key=96459fc2695a4ad8b053552c09d0c6d4&dates=2010-01-01,${formattedToday}&genres=action,rpg,shooter,strategy&metacritic=75,100&page_size=8&ordering=-metacritic`)
+        fetch(`https://api.rawg.io/api/games?key=${import.meta.env.VITE_API_KEY}&dates=2010-01-01,${formattedToday}&genres=action,rpg,shooter,strategy&metacritic=75,100&page_size=8&ordering=-metacritic`)
         .then((response) => {
             if (response.status >= 400) {
                 throw new Error("server error");
@@ -66,7 +66,7 @@ const useGameData = () => {
             setBestSellingData(response.results)
         })
 
-        fetch(`https://api.rawg.io/api/games?key=96459fc2695a4ad8b053552c09d0c6d4&dates=${formattedToday},${formattedFuture}&genres=action,rpg,shooter,strategy&page_size=4&ordering=released`)
+        fetch(`https://api.rawg.io/api/games?key=${import.meta.env.VITE_API_KEY}&dates=${formattedToday},${formattedFuture}&genres=action,rpg,shooter,strategy&page_size=4&ordering=released`)
         .then((response) => {
             if (response.status >= 400) {
                 throw new Error("server error");
@@ -77,7 +77,7 @@ const useGameData = () => {
             setUpcomingData(response.results)
         })
 
-        fetch(`https://api.rawg.io/api/games?key=96459fc2695a4ad8b053552c09d0c6d4&genres=rpg,action,shooter,strategy&dates=2010-01-01,${formattedToday}&page_size=40&ordering=-metacritic`)
+        fetch(`https://api.rawg.io/api/games?key=${import.meta.env.VITE_API_KEY}&genres=rpg,action,shooter,strategy&dates=2010-01-01,${formattedToday}&page_size=40&ordering=-metacritic`)
         .then((response) => {
             if (response.status >= 400) {
                 throw new Error("server error");
@@ -88,7 +88,7 @@ const useGameData = () => {
             setPageOne(response.results);
         })
 
-        fetch(`https://api.rawg.io/api/games?key=96459fc2695a4ad8b053552c09d0c6d4&genres=rpg,action,shooter,strategy&dates=2010-01-01,${formattedToday}&page_size=40&ordering=-metacritic&page=2`)
+        fetch(`https://api.rawg.io/api/games?key=${import.meta.env.VITE_API_KEY}&genres=rpg,action,shooter,strategy&dates=2010-01-01,${formattedToday}&page_size=40&ordering=-metacritic&page=2`)
         .then((response) => {
             if (response.status >= 400) {
                 throw new Error("server error");

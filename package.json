@@ -15,6 +15,7 @@
     "@egjs/react-flicking": "^4.11.0",
     "@mdi/js": "^7.2.96",
     "@mdi/react": "^1.6.1",
+    "dotenv": "^16.3.1",
     "flickity": "^2.3.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",

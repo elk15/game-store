@@ -42,7 +42,7 @@ const useGameInfo = (id) => {
 
     useEffect(() => {
 
-        fetch(`https://api.rawg.io/api/games/${id}?key=96459fc2695a4ad8b053552c09d0c6d4`, { mode: "cors" })
+        fetch(`https://api.rawg.io/api/games/${id}?key=${import.meta.env.VITE_API_KEY}`, { mode: "cors" })
         .then((response) => {
             if (response.status >= 400) {
                 throw new Error("server error");
@@ -54,7 +54,7 @@ const useGameInfo = (id) => {
         })
         .catch((error) => console.log(error));
 
-        fetch(`https://api.rawg.io/api/games/${id}/screenshots?key=96459fc2695a4ad8b053552c09d0c6d4`, { mode: "cors" })
+        fetch(`https://api.rawg.io/api/games/${id}/screenshots?key=${import.meta.env.VITE_API_KEY}`, { mode: "cors" })
         .then((response) => {
             if (response.status >= 400) {
                 throw new Error("server error");
@@ -65,7 +65,7 @@ const useGameInfo = (id) => {
             setScreenshots(response)
         })
 
-        fetch(`https://api.rawg.io/api/games/${id}/movies?key=96459fc2695a4ad8b053552c09d0c6d4`, { mode: "cors" })
+        fetch(`https://api.rawg.io/api/games/${id}/movies?key=${import.meta.env.VITE_API_KEY}`, { mode: "cors" })
         .then((response) => {
             if (response.status >= 400) {
                 throw new Error("server error");
